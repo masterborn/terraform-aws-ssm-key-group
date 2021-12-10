@@ -3,35 +3,44 @@ locals {
 }
 
 variable "name_parts" {
-  type = list(string)
+  description = "Parts of ssm variable name"
+  type        = list(string)
 }
 
 variable "env_object" {
-  type = map(string)
+  description = "Map with ssm variable name and its value"
+  type        = map(string)
 }
 
 variable "description" {
-  description = ""
-  default = ""
+  description = "Description that will be passed to each variable"
+  default     = ""
 }
 
 variable "type" {
-  description = "Available (String, StringList, SecureString), default String"
-  default = "String"
+  description = "Available (String, StringList, SecureString)"
+  default     = "String"
+
+  validation {
+    condition     = contains(["String", "StringList", "SecureString"], var.type)
+    error_message = "Allowed values for var.type are \"String\", \"StringList\", or \"SecureString\"."
+  }
 }
 
 variable "key_id" {
-  description = ""
-  default = null
+  description = "Key id that will be passed to each variable"
+  default     = null
 }
 
 variable "tags" {
-  type    = map(string)
-  default = {}
+  description = "Tags of resource. Provided values will be merged with default_tags"
+  type        = map(string)
+  default     = {}
 }
 
 variable "default_tags" {
-  type = map(string)
+  description = "Default tags that will be merged with var.tags"
+  type        = map(string)
   default = {
     ManagedBy = "terraform"
     Module    = "ssm-key-group"
