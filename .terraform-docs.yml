@@ -1,0 +1,57 @@
+formatter: markdown table
+
+content: |-
+  {{ .Requirements }}
+  {{ .Modules }}
+  {{ .Providers }}
+  {{ .Resources }}
+  {{ .Providers }}
+  {{ .Inputs }}
+  {{ .Outputs }}
+
+  {{/*  EXAMPLES  */}}{{
+    with $version     := include ".version"
+  }}{{
+    $template         := include "./examples/examples.md"
+  }}{{
+    range $match      := regexFindAll "{{ include \".*\" }}" $template -1
+  }}{{
+    $fileName         := index (regexSplit "\"" $match -1) 1
+  }}{{
+    $template         = replace $match (include (print "./examples/" $fileName)) $template
+  }}{{
+    $template         = replace "{{ provider_version }}" $version $template
+  }}{{
+    end
+  }}{{
+    $template
+  }}{{
+    end
+  }}
+
+
+output:
+  file: "README.md"
+  mode: inject
+  template: |-
+    <!-- START_OF_AUTO_GENERATED_SECTION -->
+    {{ .Content }}
+    <!-- END_OF_AUTO_GENERATED_SECTION -->
+
+sort:
+  enabled: false
+
+settings:
+  anchor: true
+  color: true
+  default: true
+  description: true
+  escape: true
+  hide-empty: true
+  html: true
+  indent: 2
+  lockfile: true
+  read-comments: true
+  required: true
+  sensitive: true
+  type: true

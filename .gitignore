@@ -1,0 +1,31 @@
+# vim temporaries
+*.sw[p|o|n]
+
+# python bytecode
+*.py[c|o]
+
+# system files
+.zfs
+.DS_Store
+.*.swp
+*~
+
+# Ansible
+*.retry
+
+# Terraform
+.terraform
+*.tfplan
+
+# Directories used by IDEs
+nbproject
+.idea
+.project
+.settings
+
+# SSH Private keys
+*.priv
+
+# Terragrunt
+.terragrunt-cache
+.terraform.lock.hcl
