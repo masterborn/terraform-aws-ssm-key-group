@@ -1,6 +1,6 @@
 # terraform-aws-ssm-key-group
 
-Resource that allows to declare multiple variables in map, and for each of them creates new ssm resource.
+Resource that allows to declare multiple variables in map, and for each of them creates a new [AWS SSM](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ssm-parameter.html) key resource.
 
 <!-- START_OF_AUTO_GENERATED_SECTION -->
 ## Requirements
@@ -79,8 +79,9 @@ module "secure_string_ssm_keys" {
 
 Following pre-commit hooks are provided:
 
-- terraform formatter to check syntax of terraform
-- terraform-docs to recreate README.md according to terraform module properties
+- [terraform-fmt](https://github.com/antonbabenko/pre-commit-terraform#terraform_fmt) to check syntax of terraform
+- [terraform-docs](https://github.com/terraform-docs/terraform-docs) to recreate README.md according to terraform module properties
+- [end-of-file-fixer](https://github.com/pre-commit/pre-commit-hooks#end-of-file-fixer) to ensure that each file ends with newline
 
 ### Requirements
 
