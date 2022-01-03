@@ -43,7 +43,7 @@ Resource that allows to declare multiple variables in map, and for each of them 
 ### Basic example
 ```hcl
 module "string_ssm_keys" {
-  source     = "git@github.com:masterborn/terraform-aws-ssm-key-group.git?ref=v1.0.0"
+  source     = "git@github.com:masterborn/terraform-aws-ssm-key-group.git?ref=v1.0.2"
   name_parts = [local.tags["Module"]]
 
   env_object = merge(
@@ -62,7 +62,7 @@ module "string_ssm_keys" {
 ### Secure string example
 ```hcl
 module "secure_string_ssm_keys" {
-  source     = "git@github.com:masterborn/terraform-aws-ssm-key-group.git?ref=v1.0.0"
+  source     = "git@github.com:masterborn/terraform-aws-ssm-key-group.git?ref=v1.0.2"
   name_parts = [local.tags["Module"]]
 
   type   = "SecureString"

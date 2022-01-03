@@ -4,6 +4,7 @@ repos:
     hooks:
       - id: terraform_fmt
       - id: terraform_docs
+        files: ^.*(.md|.tf|.version)$
         args:
           - --args=--config=.terraform-docs.yml
   - repo: https://github.com/pre-commit/pre-commit-hooks
